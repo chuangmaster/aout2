@@ -8,6 +8,7 @@ namespace UnitTestProject1
     [TestFixture]
     public class UnitTest1
     {
+
         //[Test]
         //public void IsValidLogFileName_BadExtension_ReturnsFalse()
         //{
@@ -42,6 +43,18 @@ namespace UnitTestProject1
         //    Assert.That(result, Is.True);
         //}
 
+        private LogAnalyzer _Analyzer;
+        [SetUp]
+        public void Setup()
+        {
+            _Analyzer = new LogAnalyzer();
+        }
+        [TearDown]
+        public void Teardown()
+        {
+            //This is demo
+            //_Analyzer = null;
+        }
 
         #region Use Test Case
         [TestCase("filewithgoodextension.slf")]
@@ -49,9 +62,7 @@ namespace UnitTestProject1
 
         public void IsValidLogFileName_GoodExtensionUppercase_ReturnsTrue(string fileName)
         {
-            LogAnalyzer analyzer = new LogAnalyzer();
-
-            bool result = analyzer.IsValidLogFileName(fileName);
+            bool result = _Analyzer.IsValidLogFileName(fileName);
 
             Assert.That(result, Is.True);
         }
@@ -61,8 +72,7 @@ namespace UnitTestProject1
         [TestCase("filewithgoodextension.Foo", false)]
         public void IsValidLogFileName_VariousExtensions_CheksThem(string fileName, bool expected)
         {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            bool result = analyzer.IsValidLogFileName(fileName);
+            bool result = _Analyzer.IsValidLogFileName(fileName);
             Assert.That(result, Is.EqualTo(expected));
         }
         #endregion
