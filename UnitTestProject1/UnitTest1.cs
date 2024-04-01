@@ -55,6 +55,13 @@ namespace UnitTestProject1
             //This is demo
             //_Analyzer = null;
         }
+        [TestFixtureSetUp]
+        public void Init()
+        { /* ... */ }
+
+        [TestFixtureTearDown]
+        public void Cleanup()
+        { /* ... */ }
 
         #region Use Test Case
         [TestCase("filewithgoodextension.slf")]
