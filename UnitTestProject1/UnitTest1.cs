@@ -64,6 +64,7 @@ namespace UnitTestProject1
         { /* ... */ }
 
         #region Use Test Case
+        [Category("Positive Unit Test")]
         [TestCase("filewithgoodextension.slf")]
         [TestCase("filewithgoodextension.SLF")]
 
@@ -77,7 +78,7 @@ namespace UnitTestProject1
         [TestCase("filewithgoodextension.SLF", true)]
         [TestCase("filewithgoodextension.foo", false)]
         [TestCase("filewithgoodextension.Foo", false)]
-        public void IsValidLogFileName_VariousExtensions_CheksThem(string fileName, bool expected)
+        public void IsValidLogFileName_VariousExtensions_ChecksThem(string fileName, bool expected)
         {
             bool result = _Analyzer.IsValidLogFileName(fileName);
             Assert.That(result, Is.EqualTo(expected));
@@ -85,5 +86,38 @@ namespace UnitTestProject1
         #endregion
 
 
+        [Test]
+        [Category("Exception Unit Test")]
+        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "filename has to be provided")]
+        public void IsValidLogFileName_EmptyFileName_ThrowException()
+        {
+            _Analyzer.IsValidLogFileName(string.Empty);
+        }
+
+        [Test]
+        [Category("Exception Unit Test")]
+        public void IsValidLogFileName_EmptyFileName_ThrowException_way2()
+        {
+            Assert.Throws<ArgumentException>(()=> _Analyzer.IsValidLogFileName(string.Empty));
+        }
+
+        [Test]
+        public void IsValidLogFileName_EmptyFileName_ThrowException_way3()
+        {
+            var analyzer = MakeAnalyzer();
+            var ex = Assert.Catch<ArgumentException>(() => analyzer.IsValidLogFileName(string.Empty));
+            NUnit.Framework.StringAssert.Contains("filename has to be provided", ex.Message);
+        }
+        [Test]
+        [Ignore("to do this test method")]
+        public void IsValidLogFileName_todo()
+        {
+
+        }
+
+        private LogAnalyzer MakeAnalyzer() {
+            return new LogAnalyzer();
+        }
     }
+
 }
