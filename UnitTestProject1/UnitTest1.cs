@@ -1,6 +1,5 @@
 ﻿using LogAn;
 using NUnit.Framework;
-using NUnit.Framework.Legacy;
 using System;
 
 namespace UnitTestProject1
@@ -67,13 +66,13 @@ namespace UnitTestProject1
         [Category("Positive Unit Test")]
         [TestCase("filewithgoodextension.slf")]
         [TestCase("filewithgoodextension.SLF")]
-
         public void IsValidLogFileName_GoodExtensionUppercase_ReturnsTrue(string fileName)
         {
             bool result = _Analyzer.IsValidLogFileName(fileName);
 
             Assert.That(result, Is.True);
         }
+
         [TestCase("filewithgoodextension.slf", true)]
         [TestCase("filewithgoodextension.SLF", true)]
         [TestCase("filewithgoodextension.foo", false)]
@@ -83,8 +82,23 @@ namespace UnitTestProject1
             bool result = _Analyzer.IsValidLogFileName(fileName);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        //Valid Status
+        [Test]
+        [TestCase("bamboo.fiber",false)]
+        [TestCase("bamboo.FIBER", false)]
+        [TestCase("bamboo.SLf", true)]
+        [TestCase("bamboo.slf", true)]
+
+        public void IsValid_WhenCalled_ChangesWasLastFileNameValid(string fileName, bool expected)
+        {
+            var analyzer = MakeAnalyzer();
+            analyzer.IsValidLogFileName(fileName);
+            Assert.AreEqual(expected, analyzer.WasLastFileNameValid);
+        }
         #endregion
 
+        #region Test for Exception 
 
         [Test]
         [Category("Exception Unit Test")]
@@ -98,7 +112,7 @@ namespace UnitTestProject1
         [Category("Exception Unit Test")]
         public void IsValidLogFileName_EmptyFileName_ThrowException_way2()
         {
-            Assert.Throws<ArgumentException>(()=> _Analyzer.IsValidLogFileName(string.Empty));
+            Assert.Throws<ArgumentException>(() => _Analyzer.IsValidLogFileName(string.Empty));
         }
 
         [Test]
@@ -108,6 +122,9 @@ namespace UnitTestProject1
             var ex = Assert.Catch<ArgumentException>(() => analyzer.IsValidLogFileName(string.Empty));
             NUnit.Framework.StringAssert.Contains("filename has to be provided", ex.Message);
         }
+
+        #endregion
+
         [Test]
         [Ignore("to do this test method")]
         public void IsValidLogFileName_todo()
@@ -115,7 +132,10 @@ namespace UnitTestProject1
 
         }
 
-        private LogAnalyzer MakeAnalyzer() {
+
+
+        private LogAnalyzer MakeAnalyzer()
+        {
             return new LogAnalyzer();
         }
     }
