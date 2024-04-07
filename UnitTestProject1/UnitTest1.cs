@@ -145,15 +145,15 @@ namespace UnitTestProject1
 
         private LogAnalyzer MakeAnalyzer(IExtensionManager manager)
         {
-            return new LogAnalyzer(manager);
+            return new LogAnalyzer();
         }
 
         [Test]
         public void IsValidFileName_NameSupportedExtension_ReturnsTrue()
         {
             FakeExtensionManager myFakeExtensionManager = new FakeExtensionManager();
-            myFakeExtensionManager.WillBeValid = true;
-            LogAnalyzer log = MakeAnalyzer(myFakeExtensionManager);
+            ExtensionFactory.SetManager(new FakeExtensionManager());
+            LogAnalyzer log = new LogAnalyzer();
             bool result = log.IsValidLogFileName("Validation.ext");
             Assert.IsTrue(result);
         }

@@ -1,16 +1,17 @@
 ﻿using aout2;
 using System;
+using System.IO;
 
 namespace LogAn
 {
     public class LogAnalyzer
     {
-        IExtensionManager _Manager;
+        private IExtensionManager _Manager;
         public bool WasLastFileNameValid { get; set; }
 
-        public LogAnalyzer(IExtensionManager mgr)
+        public LogAnalyzer()
         {
-            _Manager = mgr;
+            _Manager = ExtensionFactory.Create();
         }
 
         public bool IsValidLogFileName(string fileName)
@@ -30,7 +31,7 @@ namespace LogAn
             //WasLastFileNameValid = true;
             #endregion
 
-            return _Manager.IsValid(fileName);
+            return _Manager.IsValid(fileName) &&　Path.GetFileNameWithoutExtension(fileName).Length > 5;
         }
 
     }

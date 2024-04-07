@@ -18,4 +18,22 @@ namespace aout2
             return true;
         }
     }
+
+    public class ExtensionFactory
+    {
+        private static IExtensionManager _ExtensionManager;
+        public static IExtensionManager Create()
+        {
+            if(_ExtensionManager == null)
+            {
+                return _ExtensionManager;
+            }
+            return new FileExtensionManager();
+        }
+
+        public static void SetManager(IExtensionManager manager)
+        {
+            _ExtensionManager = manager; 
+        }
+    }
 }
