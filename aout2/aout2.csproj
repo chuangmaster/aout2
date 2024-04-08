@@ -44,9 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IExtensionManager.cs" />
-    <Compile Include="Services\FakeWebService.cs" />
-    <Compile Include="Services\Interfaces\IWebService.cs" />
     <Compile Include="LogAnalyzer.cs" />
+    <Compile Include="Services\FakeEmailService.cs" />
+    <Compile Include="Services\FakeWebService.cs" />
+    <Compile Include="Services\Interfaces\IEmailService.cs" />
+    <Compile Include="Services\Interfaces\IWebService.cs" />
+    <Compile Include="LogAnalyzer2.cs" />
     <Compile Include="LogAnalyzerUsingFactoryMethod.cs" />
     <Compile Include="MemCalculator.cs" />
     <Compile Include="Program.cs" />

@@ -9,10 +9,13 @@ namespace aout2.Services
 {
     public class FakeWebService : IWebService
     {
-        public string LastError { get; set; }
+        public Exception ToThrow { get; set; }
         public void LogError(string message)
         {
-            LastError = message;
+            if(ToThrow != null)
+            {
+                throw ToThrow;
+            }
         }
     }
 }
