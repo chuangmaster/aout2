@@ -1,4 +1,6 @@
 ﻿using aout2;
+using aout2.Services;
+using LogAn;
 using NUnit.Framework;
 namespace UnitTestProject1
 {
@@ -8,13 +10,13 @@ namespace UnitTestProject1
         [Test]
         public void OverrideTest() { 
 
-            FakeExtensionManager stub = new FakeExtensionManager();
-            stub.WillBeValid = true;
+            FakeWebService mockService = new FakeWebService();
 
-            TestableLogAnalyzer testableLogAnalyzer= new TestableLogAnalyzer(stub);
+            LogAnalyzer logAnalyzer = new LogAnalyzer(mockService);
+            string tooShortFileName = "err.ext";
+            logAnalyzer.Analyze(tooShortFileName);
 
-            bool result = testableLogAnalyzer.IsValidLogFile("fileName.ext");
-            Assert.IsTrue(result);
+            StringAssert.Contains("Filename is too short:err.ext", mockService.LastError);
             
         }
     }

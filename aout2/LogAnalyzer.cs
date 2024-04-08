@@ -1,4 +1,5 @@
 ﻿using aout2;
+using aout2.Services.Interfaces;
 using System;
 using System.IO;
 
@@ -6,32 +7,19 @@ namespace LogAn
 {
     public class LogAnalyzer
     {
-        private IExtensionManager _Manager;
-        public bool WasLastFileNameValid { get; set; }
+        private IWebService _WebService { get; set; }
 
-        public LogAnalyzer()
+        public LogAnalyzer(IWebService webService)
         {
-            _Manager = ExtensionFactory.Create();
+            _WebService = webService;
         }
 
-        public bool IsValidLogFileName(string fileName)
+        public void Analyze(string fileName)
         {
-            #region old
-            //WasLastFileNameValid = false;
-
-            //if (string.IsNullOrEmpty(fileName))
-            //{
-            //    throw new ArgumentException("filename has to be provided");
-            //}
-            //if (!fileName.EndsWith(".SLF",StringComparison.CurrentCultureIgnoreCase))
-            //{
-            //    return false;
-            //}
-
-            //WasLastFileNameValid = true;
-            #endregion
-
-            return _Manager.IsValid(fileName) &&　Path.GetFileNameWithoutExtension(fileName).Length > 5;
+            if (fileName.Length < 8)
+            {
+                _WebService.LogError("Filename is too short:" + fileName);
+            }
         }
 
     }
