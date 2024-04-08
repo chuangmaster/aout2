@@ -8,7 +8,7 @@ namespace UnitTestProject1
     public class LogAnalyzerTests
     {
         [Test]
-        public void OverrideTest() { 
+        public void Analyze_TooShortFileName_CallsWebService() { 
 
             FakeWebService mockService = new FakeWebService();
 
