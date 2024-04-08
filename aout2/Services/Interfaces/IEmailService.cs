@@ -8,6 +8,13 @@ namespace aout2.Services.Interfaces
 {
     public interface IEmailService
     {
-        void SendEmail(string to, string subject, string body);
+        void SendEmail(EmailInfo emailInfo);
+    }
+
+    public class EmailInfo
+    {
+        public string To;
+        public string Subject;
+        public string Body;
     }
 }

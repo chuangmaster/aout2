@@ -26,7 +26,12 @@ namespace LogAn
                 }
                 catch (Exception e)
                 {
-                    _EmailService.SendEmail("test@gmail.com", "Log Error", e.Message);
+                    _EmailService.SendEmail(new EmailInfo
+                    {
+                        To = "test@gmail.com",
+                        Subject = "Log Error", 
+                        Body =  e.Message
+                    });
                 }
             }
         }
