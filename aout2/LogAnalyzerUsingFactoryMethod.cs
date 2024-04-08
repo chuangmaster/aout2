@@ -8,14 +8,14 @@ namespace aout2
 {
     public class LogAnalyzerUsingFactoryMethod
     {
-        public bool IsValidLogFile(string fileName)
+        public bool IsValidLogFileName(string fileName)
         {
-            return GetManager().IsValid(fileName);
+            return this.IsValid(fileName);
         }
 
-        protected virtual IExtensionManager GetManager()
+        protected virtual bool IsValid(string fileName)
         {
-            return new FileExtensionManager();
+            return new FileExtensionManager().IsValid(fileName);
         }
     }
 }

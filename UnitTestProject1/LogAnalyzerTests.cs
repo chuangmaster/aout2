@@ -8,12 +8,10 @@ namespace UnitTestProject1
         [Test]
         public void OverrideTest() { 
 
-            FakeExtensionManager stub = new FakeExtensionManager();
-            stub.WillBeValid = true;
+            TestableLogAnalyzer testableLogAnalyzer= new TestableLogAnalyzer();
+            testableLogAnalyzer.IsSupported = true;
 
-            TestableLogAnalyzer testableLogAnalyzer= new TestableLogAnalyzer(stub);
-
-            bool result = testableLogAnalyzer.IsValidLogFile("fileName.ext");
+            bool result = testableLogAnalyzer.IsValidLogFileName("fileName.ext");
             Assert.IsTrue(result);
             
         }

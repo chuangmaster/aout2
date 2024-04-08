@@ -8,15 +8,11 @@ namespace aout2
 {
     public class TestableLogAnalyzer : LogAnalyzerUsingFactoryMethod
     {
-        private IExtensionManager _Manager;
 
-        public TestableLogAnalyzer(IExtensionManager manager)
+        public bool IsSupported { get; set; }
+        protected override bool IsValid(string fileName)
         {
-            _Manager = manager;
-        }
-        protected override IExtensionManager GetManager()
-        {
-            return _Manager;
+            return IsSupported;
         }
 
     }
