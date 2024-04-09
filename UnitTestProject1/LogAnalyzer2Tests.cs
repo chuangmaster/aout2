@@ -8,7 +8,7 @@ using System;
 namespace UnitTestProject1
 {
     [TestFixture]
-    public class LogAnalyzerTests
+    public class LogAnalyzer2Tests
     {
         [Test]
         public void Analyze_WebServiceThrowException_SendEmail()

@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeLogger.cs" />
     <Compile Include="IExtensionManager.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="LogAnalyzer.cs" />
     <Compile Include="Services\FakeEmailService.cs" />
     <Compile Include="Services\FakeWebService.cs" />
