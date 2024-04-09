@@ -10,11 +10,13 @@ namespace UnitTestProject1
         [Test]
         public void Analyze_TooShortName_CallLogger()
         {
-            FakeLogger logger = new FakeLogger();
+            //FakeLogger logger = new FakeLogger();
+            ILogger logger = Substitute.For<ILogger>();
+
             LogAnalyzer analyzer = new LogAnalyzer(logger);
             analyzer.MinNameLength = 6;
             analyzer.Analyze("a.txt");
-            StringAssert.Contains("too short", logger.LastError);
+            logger.Received().Log("too short");
 
         }
     }
