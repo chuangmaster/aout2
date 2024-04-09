@@ -7,11 +7,11 @@ namespace LogAn
 {
     public class LogAnalyzer
     {
-        private FakeLogger FakeLogger;
+        private ILogger _Logger;
         public int MinNameLength = 5;
-        public LogAnalyzer(FakeLogger logger)
+        public LogAnalyzer(ILogger logger)
         {
-            FakeLogger = logger;
+            _Logger = logger;
         }
 
         public void Analyze(string fileName)
@@ -19,7 +19,7 @@ namespace LogAn
             if (fileName.Length < MinNameLength)
             {
                 /*_WebService.LogError("Filename is too short:" + fileName);*/
-                FakeLogger.Log("too short");
+                _Logger.Log("too short");
             }
         }
 
