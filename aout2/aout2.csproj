@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="FakeLogger.cs" />
     <Compile Include="IExtensionManager.cs" />
+    <Compile Include="IFileNameRule.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="LogAnalyzer.cs" />
     <Compile Include="Services\FakeEmailService.cs" />
