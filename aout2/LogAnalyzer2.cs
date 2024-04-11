@@ -33,5 +33,24 @@ namespace LogAn
             }
         }
 
+        public void Analyze2(string fileName)
+        {
+            if (fileName.Length < MinNameLength)
+            {
+                try
+                {
+                    _Logger.LogError($"Filename too short: {fileName}");
+                }
+                catch (Exception e)
+                {
+                    _WebService.Write(new ErrorInfo()
+                    {
+                        Severity = 1000,
+                        Message = e.Message
+                    });
+                }
+            }
+        }
+
     }
 }

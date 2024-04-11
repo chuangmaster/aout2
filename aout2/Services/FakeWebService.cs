@@ -14,5 +14,10 @@ namespace aout2.Services
         {
             MessageToWebService = message;
         }
+
+        public void Write(ErrorInfo info)
+        {
+            MessageToWebService = info.Message;
+        }
     }
 }

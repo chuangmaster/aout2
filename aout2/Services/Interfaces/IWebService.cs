@@ -9,5 +9,7 @@ namespace aout2.Services.Interfaces
     public interface IWebService
     {
         void Write(string message);
+
+        void Write(ErrorInfo info);
     }
 }
