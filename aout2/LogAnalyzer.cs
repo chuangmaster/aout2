@@ -19,7 +19,7 @@ namespace LogAn
             if (fileName.Length < MinNameLength)
             {
                 /*_WebService.LogError("Filename is too short:" + fileName);*/
-                _Logger.Log("too short");
+                _Logger.LogError("too short");
             }
         }
 

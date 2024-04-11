@@ -16,7 +16,7 @@ namespace UnitTestProject1
             LogAnalyzer analyzer = new LogAnalyzer(logger);
             analyzer.MinNameLength = 6;
             analyzer.Analyze("a.txt");
-            logger.Received().Log("too short");
+            logger.Received().LogError("too short");
 
         }
     }

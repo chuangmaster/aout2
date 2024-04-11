@@ -8,30 +8,27 @@ namespace LogAn
     public class LogAnalyzer2
     {
         public IWebService _WebService { get; set; }
-        public IEmailService _EmailService { get; set; }
+        public ILogger _Logger { get; set; }
 
-        public LogAnalyzer2(IWebService webService, IEmailService emailService)
+        public LogAnalyzer2(IWebService webService, ILogger logger)
         {
             _WebService = webService;
-            _EmailService = emailService;
+            _Logger = logger;
         }
+
+        public int MinNameLength { get; set; }
 
         public void Analyze(string fileName)
         {
-            if (fileName.Length < 8)
+            if (fileName.Length < MinNameLength)
             {
                 try
                 {
-                    _WebService.LogError("Filename is too short:" + fileName);
+                    _Logger.LogError($"Filename too short: {fileName}");
                 }
                 catch (Exception e)
                 {
-                    _EmailService.SendEmail(new EmailInfo
-                    {
-                        To = "test@gmail.com",
-                        Subject = "Log Error", 
-                        Body =  e.Message
-                    });
+                    _WebService.Write("Error From Logger" + e.Message);
                 }
             }
         }
