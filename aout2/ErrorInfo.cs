@@ -14,7 +14,11 @@ namespace aout2
 
         public override bool Equals(object obj)
         {
-            return (ErrorInfo)obj is ErrorInfo && ((ErrorInfo)obj).Severity == Severity && ((ErrorInfo)obj).Message == Message;
+            if (obj is ErrorInfo info)
+            {
+                return info.Severity == Severity && info.Message == Message;
+            }
+            return false
         }
     }
 }
