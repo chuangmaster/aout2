@@ -69,5 +69,31 @@ namespace UnitTestProject1
             mockWebService.Received().Write(
                 Arg.Is<ErrorInfo>(info => info.Severity == 1000 && info.Message.Contains("fake exception")));
         }
+
+        [Test]
+        public void Analyze2_LoggerThrows_CallsWebServiceWithNSubObjectCompare()
+        {
+            //arrange
+            IWebService mockWebService = Substitute.For<IWebService>();
+            ILogger mockLogger = Substitute.For<ILogger>();
+            mockLogger.When(logger =>
+            {
+                logger.LogError(Arg.Any<string>());
+            }).Do(context =>
+            {
+                throw new Exception("fake exception");
+            });
+            LogAnalyzer2 logAnalyzer = new LogAnalyzer2(mockWebService, mockLogger);
+            logAnalyzer.MinNameLength = 10;
+            string tooShortFileName = "short.ext";
+            logAnalyzer.Analyze2(tooShortFileName);
+
+            var expected = new ErrorInfo()
+            {
+                Severity = 1000,
+                Message = "fake exception"
+            };
+            mockWebService.Received().Write(expected);
+        }
     }
 }

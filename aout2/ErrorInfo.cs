@@ -11,5 +11,10 @@ namespace aout2
         public int Severity { get; set; }
 
         public string Message { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return (ErrorInfo)obj is ErrorInfo && ((ErrorInfo)obj).Severity == Severity && ((ErrorInfo)obj).Message == Message;
+        }
     }
 }
