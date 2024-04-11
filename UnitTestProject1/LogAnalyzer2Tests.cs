@@ -3,6 +3,8 @@ using aout2.Services;
 using aout2.Services.Interfaces;
 using LogAn;
 using Newtonsoft.Json;
+using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using System;
 namespace UnitTestProject1
@@ -11,25 +13,39 @@ namespace UnitTestProject1
     public class LogAnalyzer2Tests
     {
         [Test]
-        public void Analyze_WebServiceThrowException_SendEmail()
+        public void Analyze_LoggerThrows_CallsWebService()
         {
 
-            FakeWebService mockWebService = new FakeWebService();
-            mockWebService.ToThrow = new System.Exception("An error occurred and was recorded in the log files");
-            EmailInfo expectedMailInfo = new EmailInfo()
+            IWebService mockWebService = Substitute.For<IWebService>();
+            ILogger mockLogger = Substitute.For<ILogger>();
+            mockLogger.When(x => x.LogError(Arg.Any<string>())).Do(context =>
             {
-                To = "test@gmail.com",
-                Subject = "Log Error",
-                Body = "An error occurred and was recorded in the log files"
-            };
-            FakeEmailService mockMailService = new FakeEmailService();
-           
-            LogAnalyzer2 log = new LogAnalyzer2(mockWebService, mockMailService);
-            string tooShortFileName = "err.ext";
-            log.Analyze(tooShortFileName);
-            var expectedJson = JsonConvert.SerializeObject(expectedMailInfo);
-            var actualJson = JsonConvert.SerializeObject(mockMailService.MailInfo);
-            StringAssert.Contains(expectedJson, actualJson);
+                throw new Exception("fake exception");
+            });
+
+            LogAnalyzer2 analyzer = new LogAnalyzer2(mockWebService, mockLogger);
+            analyzer.MinNameLength = 10;
+            string tooShortFileName = "short.ext";
+            analyzer.Analyze(tooShortFileName);
+            mockWebService.Received().Write(Arg.Is<string>(s=>s.Contains("fake exception")));
+        }
+
+        [Test]
+        public void Analyze_LoggerThrowsExcpetion()
+        {
+
+            IWebService mockWebService = Substitute.For<IWebService>();
+            ILogger mockLogger = Substitute.For<ILogger>();
+            mockLogger.When(x => x.LogError(Arg.Any<string>())).Do(context =>
+            {
+                throw new Exception("fake exception");
+            });
+
+            LogAnalyzer2 analyzer = new LogAnalyzer2(mockWebService, mockLogger);
+            analyzer.MinNameLength = 10;
+            string tooShortFileName = "short.ext";
+            //測試當直接拋錯誤
+            Assert.Throws<Exception>(() => analyzer.Analyze(tooShortFileName));
         }
     }
 }
