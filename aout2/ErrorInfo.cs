@@ -18,7 +18,7 @@ namespace aout2
             {
                 return info.Severity == Severity && info.Message == Message;
             }
-            return false
+            return false;   
         }
     }
 }
