@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventRelatedTests.cs" />
     <Compile Include="FileNameRuleTest.cs" />
     <Compile Include="LogAnalyzer2Tests.cs" />
     <Compile Include="LogAnalyzerTests.cs" />
