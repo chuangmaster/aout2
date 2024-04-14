@@ -9,6 +9,7 @@ namespace aout2
     public interface IView
     {
         event Action Loaded;
+        event Action<string> ErrorOccured;
 
         void Render(string text);
     }
