@@ -61,7 +61,9 @@
     <Compile Include="MemCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemTime.cs" />
     <Compile Include="TestableLogAnalyzer.cs" />
+    <Compile Include="TimeLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
