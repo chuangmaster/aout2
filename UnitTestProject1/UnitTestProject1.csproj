@@ -95,6 +95,7 @@
     <Compile Include="LogAnalyzerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MemCalculatorTest.cs" />
+    <Compile Include="StringParserTests\FillInTheBlanksStringParserTests.cs" />
     <Compile Include="StringParserTests\StandardStringParserTests.cs" />
     <Compile Include="StringParserTests\JsonStringParserTests.cs" />
     <Compile Include="StringParserTests\TemplateStringParserTests.cs" />

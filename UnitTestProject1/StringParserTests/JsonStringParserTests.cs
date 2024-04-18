@@ -5,33 +5,19 @@ using NUnit.Framework;
 namespace UnitTestProject1.StringParserTests
 {
     [TestFixture]
-    public class JsonStringParserTests : TemplateStringParserTests
+    public class JsonStringParserTests : FillInTheBlanksStringParserTests
     {
-        protected IStringParser GetParser(string input)
+        protected override string HeaderVersion_SingleDigit => @"{ 
+                                                                    ""version"" : ""1"" 
+                                                                  }";
+
+        protected override string HeaderVersion_WithMinorVersionDigit => throw new System.NotImplementedException();
+
+        protected override string HeaderVersion_WithRevision => throw new System.NotImplementedException();
+
+        protected override IStringParser GetParser(string input)
         {
             return new JsonStringParser(input);
         }
-        [Test]
-        public override void TestGetTextVersionFromHeader_SingleDigit_Found()
-        {
-            var input = @"{ 
-                            ""version"" : ""1"" 
-                          }";
-            IStringParser parser = GetParser(input);
-            var act = parser.GetTextVersionFromHeader();
-            Assert.AreEqual("1", act);
-        }
-
-        public override void TestGetTextVersionFromHeader_WithMinorVersionDigit_Found()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void TestGetTextVersionFromHeader_WithRevision_Found()
-        {
-            throw new System.NotImplementedException();
-        }
-
-
     }
 }
