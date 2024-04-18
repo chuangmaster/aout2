@@ -49,8 +49,10 @@
     <Compile Include="IExtensionManager.cs" />
     <Compile Include="IFileNameRule.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="Parser\BaseStringParser.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LogAnalyzer.cs" />
+    <Compile Include="Parser\StandardStringParser.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Services\FakeEmailService.cs" />
     <Compile Include="Services\FakeWebService.cs" />
@@ -67,6 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InheritTest\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

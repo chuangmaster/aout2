@@ -95,6 +95,7 @@
     <Compile Include="LogAnalyzerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MemCalculatorTest.cs" />
+    <Compile Include="StandardStringParserTests.cs" />
     <Compile Include="TimeLoggerTests.cs" />
   </ItemGroup>
   <ItemGroup>
