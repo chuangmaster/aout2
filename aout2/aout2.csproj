@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,7 @@
     <Compile Include="Parser\BaseStringParser.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LogAnalyzer.cs" />
+    <Compile Include="Parser\JsonStringParser.cs" />
     <Compile Include="Parser\StandardStringParser.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Services\FakeEmailService.cs" />
@@ -69,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="InheritTest\" />

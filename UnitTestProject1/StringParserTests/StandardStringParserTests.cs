@@ -1,7 +1,7 @@
 ﻿using aout2.Parser;
 using NUnit.Framework;
 
-namespace UnitTestProject1
+namespace UnitTestProject1.StringParserTests
 {
     [TestFixture]
     public class StandardStringParserTests
