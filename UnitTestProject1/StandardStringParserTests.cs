@@ -6,9 +6,9 @@ namespace UnitTestProject1
     [TestFixture]
     public class StandardStringParserTests
     {
+        // 用工廠方法來取得SUT
         private StandardStringParser GetParser(string input)
         {
-
             return new StandardStringParser(input);
         }
 
