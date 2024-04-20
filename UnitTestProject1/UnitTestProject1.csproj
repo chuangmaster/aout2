@@ -93,6 +93,7 @@
     <Compile Include="FileNameRuleTest.cs" />
     <Compile Include="LogAnalyzer2Tests.cs" />
     <Compile Include="LogAnalyzerTests.cs" />
+    <Compile Include="LogAnalyzer\LogAnalyzer3Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MemCalculatorTest.cs" />
     <Compile Include="StringParserTests\FillInTheBlanksStringParserTests.cs" />

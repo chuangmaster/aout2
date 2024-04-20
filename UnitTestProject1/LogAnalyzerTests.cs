@@ -13,7 +13,7 @@ namespace UnitTestProject1
             //FakeLogger logger = new FakeLogger();
             ILogger logger = Substitute.For<ILogger>();
 
-            LogAnalyzer analyzer = new LogAnalyzer(logger);
+            LogAn.LogAnalyzer analyzer = new LogAn.LogAnalyzer(logger);
             analyzer.MinNameLength = 6;
             analyzer.Analyze("a.txt");
             logger.Received().LogError("too short");

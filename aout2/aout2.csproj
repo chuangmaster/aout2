@@ -46,12 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalyzedOutput.cs" />
     <Compile Include="ErrorInfo.cs" />
     <Compile Include="FakeLogger2.cs" />
     <Compile Include="FakeLogger.cs" />
     <Compile Include="IExtensionManager.cs" />
     <Compile Include="IFileNameRule.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="LineInfo.cs" />
+    <Compile Include="LogAnalyzer3.cs" />
     <Compile Include="Parser\BaseStringParser.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LogAnalyzer.cs" />
