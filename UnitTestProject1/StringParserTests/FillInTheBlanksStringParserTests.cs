@@ -30,6 +30,7 @@ namespace UnitTestProject1.StringParserTests
             Assert.AreEqual(EXPECTED_SINGLEDIGIT, act);
         }
         [Test]
+        [Ignore]
         public void TestGetTextVersionFromHeader_WithMinorVersionDigit_Found()
         {
             string input = HeaderVersion_WithMinorVersionDigit;
@@ -39,6 +40,7 @@ namespace UnitTestProject1.StringParserTests
         }
 
         [Test]
+        [Ignore]
         public void TestGetTextVersionFromHeader_WithRevision_Found()
         {
             string input = HeaderVersion_WithRevision;

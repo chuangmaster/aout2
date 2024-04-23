@@ -8,6 +8,7 @@ namespace UnitTestProject1
     /// Summary description for UnitTest2
     /// </summary>
     [TestFixture]
+    [Category("UnitTest")]
     public class MemCalculatorTest
     {
         [Test]

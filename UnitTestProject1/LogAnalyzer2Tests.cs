@@ -10,6 +10,7 @@ using System;
 namespace UnitTestProject1
 {
     [TestFixture]
+    [Category("UnitTest")]
     public class LogAnalyzer2Tests
     {
         [Test]

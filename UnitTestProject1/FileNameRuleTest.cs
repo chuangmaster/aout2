@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace UnitTestProject1
 {
     [TestFixture]
+    [Category("UnitTest")]
     public class FileNameRuleTest
     {
         [Test]

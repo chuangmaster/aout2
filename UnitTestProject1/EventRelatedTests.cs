@@ -9,6 +9,7 @@ namespace UnitTestProject1
     public class EventRelatedTests
     {
         [Test]
+        [Property("UnitTest", "T")]
         public void Ctor_WhenViewIsLoaded_CallsViewRender()
         {
             IView mockView = Substitute.For<IView>();

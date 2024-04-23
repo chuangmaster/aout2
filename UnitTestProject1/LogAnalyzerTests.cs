@@ -8,6 +8,7 @@ namespace UnitTestProject1
     public class LogAnalyzerTests
     {
         [Test]
+        [Category("UnitTest")]
         public void Analyze_TooShortName_CallLogger()
         {
             //FakeLogger logger = new FakeLogger();

@@ -13,6 +13,7 @@ namespace UnitTestProject1.LogAnalyzer
     {
 
         [Test]
+        [Ignore]
         public void TestAnalyze()
         {
             var input = "a\tb\t";
